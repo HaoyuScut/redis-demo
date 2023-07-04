@@ -10,6 +10,10 @@ import org.springframework.data.redis.core.RedisTemplate;
  * RedisTemplate可以接收任意Object作为值写入Redis，
  * 只不过写入前会把Object序列化为字节形式，默认是采用JDK序列化，
  * 可读性差，占用内存大
+ *
+ * 为了节省内存空间，我们并不会使用)SON序列化器来处理value，
+ * 而是统一使用String序列化器，要求只能存储String类型的key和value。
+ * 当需要存储Java对象时，手动完成对象的序列化和反序列化。
  */
 
 @SpringBootTest
